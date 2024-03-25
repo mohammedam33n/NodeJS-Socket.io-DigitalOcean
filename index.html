@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
+
+  </head>
+  <body>
+        
+    <button id="fromClient">From Client</button>
+
+      <script>
+
+      var socket = io();
+
+      socket.on('fromServer', function(data) {
+                
+        console.log( 'ON: fromServer');
+                
+      });
+          
+      socket.on('time', function(data) {
+                
+        console.log( 'ON: time');
+                
+      });
+            
+      document.getElementById('fromClient').onclick = function(){
+               
+        socket.emit('fromClient', { "message":"Sent from client!" });
+        console.log( 'EMIT: fromClient');
+                
+      }
+            
+    </script>
+        
+  </body>
+
+</html>
